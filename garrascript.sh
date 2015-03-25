@@ -2,8 +2,8 @@
 
 VERSION=0.5
 SELF=$(basename $0)
-UPDATE_BASE=https://dl.dropboxusercontent.com/u/61484619/garrascript.sh 
-FILES=https://dl.dropboxusercontent.com/u/43551467/88k_Linux_Static.tar.gz
+UPDATE_BASE=https://raw.githubusercontent.com/MrGarri/Garrascript/master/garrascript.sh
+FILES=https://raw.githubusercontent.com/MrGarri/Garrascript/master/Files/88k_Linux_Static.tar.gz
 
 source .garrastats 2> /dev/null
 
