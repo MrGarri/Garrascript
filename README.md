@@ -27,4 +27,4 @@ The following command will compile the file and launch the emulator with the nec
     
 If you want to compile and execute only a subroutine, execute the following command:
 
-    ./garquiscript.sh <filename> <subroutine_name>
+    ./garrrascript.sh <filename> <subroutine_name>
