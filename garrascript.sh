@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=0.43
+VERSION=0.5
 SELF=$(basename $0)
 UPDATE_BASE=https://dl.dropboxusercontent.com/u/61484619/garrascript.sh 
 FILES=https://dl.dropboxusercontent.com/u/43551467/88k_Linux_Static.tar.gz
