@@ -9,7 +9,7 @@ emulator, navigate to the location the script is and execute the following comma
 
     ./garrascript FILENAME [SUBROUTINE]
     
-The file must be specified without the extension, just by its name. By default, the script will compile the file and execute the emulator. However, you can specify the name of a subroutine to just compile and execute that specific subroutine without executing or compile the rest of the file.
+The file must be specified without the extension, just by its name. By default, the script will compile the file and execute the emulator. However, you can specify the name of a subroutine to just compile and execute that specific subroutine without executing or compiling the rest of the file.
 
 Here are also some special options you may find useful:
 
