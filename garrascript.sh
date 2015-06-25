@@ -29,7 +29,7 @@ function inst {
 
 	download 88k_Linux_Static.tar.gz $FILES
 	echo "Copying files..."
-	tar -zxf 88k_Linux_Static.tar.gz 
+	tar -zxf 88k_Linux_Static.tar.gz
 	mv EM88110/* .
 	if [[ $? != 0 ]]
 		then
@@ -61,34 +61,34 @@ function inst {
 }
 
 if [[ $1 == "--help" || $1 == "-h" || $1 == "" ]]
-	then 
+	then
 		printf "\nCompiles .ens files using 88110 emulator and executes them.\n\n"
 		echo "Usage: garrascript.sh NAME [SUBROUTINE]"
 			printf "\tName:\t\tname of the file without extension.\n"
 			printf "\tSubroutine:\tname of the subroutine. Using this command only compiles the given subroutine.\n\n"
-			
+
 		echo "Special options:"
 			printf "\t-h, --help: Shows this help text.\n"
 			printf "\t--version: Shows current version of the script.\n"
 			printf "\t--stats: Shows executing stats of this script.\n"
 			printf "\t--update: Auto-updates the script to the latest version.\n"
 			printf "\t--install: Downloads and installs all emulator files.\n"
-		
+
 		printf "\n\nYou can ask my cat now how this script works\n\n"
-		exit 0		
-		
+		exit 0
+
 elif [[ $1 == "--version" ]]
 	then
 		printf "\nGarraScript version $VERSION.\n"
 		printf "Last updated on $(date -r $SELF).\n\n"
 		exit 0
-		
+
 elif [[ $1 == "--stats" ]]
 	then
 		printf "\nCorrect executions:\t\t$SUCCESSFUL_EXEC\n"
 		printf "Wrong executions:\t\t$WRONG_EXEC\n\n"
 		exit 0
-		
+
 elif [[ $1 == "--update" ]]
 	then
 		# Download new version
@@ -98,7 +98,7 @@ elif [[ $1 == "--update" ]]
 		chmod $OCTAL_MODE $0.tmp
 		# Overwrite old file with new
 		mv -f $0.tmp $0
-		
+
 		if [[ $? == 0 ]]
 			then
 				NEWVER=$(head garrascript.sh | grep "VERSION=" | sed 's/[^0-9.]//g')
@@ -119,29 +119,30 @@ elif [[ $1 == "--install" ]]
 elif [[ ! -e 88110e || ! -e 88110ins || ! -e em88110 || ! -e INSTALL || ! -e serie || ! -e paralelo ]]
 	then
 		echo "One or more files are not in the current directory. Do you want to download them? [Y/n]"
-		read input		
+		read input
 		if [[ $input == "Y" || $input == "y" || $input == "" ]]
 			then
 				inst false
 		else
 			exit 0
 		fi
-		
+
 # Main program.
+
 else
-	if [[ $2 ]]		
+	if [[ $2 ]]
 		then
 			./88110e -e $2 -o $1.bin $1.ens
 		else
 			./88110e -o $1.bin $1.ens
 	fi
-	
+
 	if [[ $? == 0 ]]
 		then
 			./em88110 -c serie $1.bin
 			CORRECT=true
 	fi
-	
+
 	if [[ $CORRECT == true ]]
 		then
 			printf "\nThanks for using GarraScript, $USER!\n\n"
@@ -157,8 +158,6 @@ else
 			((WRONG_EXEC++))
 			((WRONG_EXEC_ROW++))
 	fi
-	
+
 	printf "SUCCESSFUL_EXEC=$SUCCESSFUL_EXEC\nWRONG_EXEC=$WRONG_EXEC\nWRONG_EXEC_ROW=$WRONG_EXEC_ROW\n" > .garrastats
 fi
-
-
